@@ -1214,16 +1214,19 @@
 
 
   <!-- Optimisation -->
-  <!-- <script>
+  <script>
+    var content = document.querySelector('.whyUs-section .content');
+    var riven_img = document.getElementById('riven-absolute-container');
+    var riven_img_clone = riven_img.cloneNode(true);
+
     window.addEventListener('resize', function() {
-      var riven_img = document.getElementById('riven-absolute-container');
-      if (document.body.clientWidth < 1000) {
-        riven_img.remove();
-      } else {
-        console.log(riven_img);
+      if (screen.width < 1000 && document.getElementById('riven-absolute-container')) {
+        document.getElementById('riven-absolute-container').remove();
+      } else if (screen.width > 1000 && !document.getElementById('riven-absolute-container')) {
+        content.insertAdjacentElement('afterbegin', riven_img_clone);
       }
     });
-  </script> -->
+  </script>
   <!-- Add scripts -->
   <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
