@@ -1,0 +1,4 @@
+
+function contact_us_modal_init(){const contact_call=document.getElementsByClassName('contact_call');const contact_us_blackout=document.getElementById('contact-us_blackout');const contact_us_modal=document.getElementById('contact-us-modal');const mobile_menu=document.getElementById('mobile-menu');for(element of contact_call){element.addEventListener('click',()=>{mobile_active=document.querySelector('.mobile-active');if(mobile_active!=null){mobile_menu.classList.remove('mobile-active');contact_us_blackout.classList.add('flex');}else{global_blackout.classList.add('block');contact_us_blackout.classList.add('flex');}})}
+contact_us_blackout.addEventListener('click',function(){if(event.target.classList.contains('modal_blackout')||event.target.classList.contains('la')){global_blackout.classList.remove('block');contact_us_blackout.classList.remove('flex');}})
+global_blackout.addEventListener('click',()=>{contact_us_modal.classList.remove('block');})};

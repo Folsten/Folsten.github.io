@@ -1,0 +1,5 @@
+
+function mobile_menu_init(){const mobile_icon=document.querySelector('header .mobile-icon');const mobile_menu=document.getElementById('mobile-menu');const close_menu=document.querySelector('#mobile-menu .close-menu');const nav_mobile=document.querySelector('.mobile-section .nav-mobile ul');const global_blackout=document.getElementById('global_blackout');mobile_icon.addEventListener('click',function(){mobile_menu.classList.add('mobile-active');global_blackout.classList.add('block');})
+close_menu.addEventListener('click',function(){mobile_menu.classList.remove('mobile-active');global_blackout.classList.remove('block');})
+global_blackout.addEventListener('click',function(){mobile_menu.classList.remove('mobile-active');global_blackout.classList.remove('block');})
+nav_mobile.addEventListener('click',function(){mobile_menu.classList.remove('mobile-active');if(!event.target.classList.contains('contact_call')){global_blackout.classList.remove('block');}})};
