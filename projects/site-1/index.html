@@ -1214,11 +1214,16 @@
 
 
   <!-- Optimisation -->
-  <script>
-    if (document.body.clientWidth < 1000) {
-      document.getElementById('riven-absolute-container').remove();
-    };
-  </script>
+  <!-- <script>
+    window.addEventListener('resize', function() {
+      var riven_img = document.getElementById('riven-absolute-container');
+      if (document.body.clientWidth < 1000) {
+        riven_img.remove();
+      } else {
+        console.log(riven_img);
+      }
+    });
+  </script> -->
   <!-- Add scripts -->
   <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
