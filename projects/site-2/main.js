@@ -108,9 +108,9 @@ function main() {
 
 function appleInZone(applePosition) {
   if (applePosition.x < 30) {applePosition.x = 30}
-  if (applePosition.x > canvas.width) {applePosition.x = canvas.width - 30}
+  if (applePosition.x > canvas.width - squareSize) {applePosition.x = canvas.width - 30}
   if (applePosition.y < 30) {applePosition.y = 30}
-  if (applePosition.y > canvas.height) {applePosition.y = canvas.height - 30}; 
+  if (applePosition.y > canvas.height - squareSize) {applePosition.y = canvas.height - 30}; 
 
   return applePosition;
 }
