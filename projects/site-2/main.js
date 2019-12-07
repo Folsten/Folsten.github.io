@@ -1,29 +1,30 @@
 // define general constants
 const
   canvas = document.getElementById('canvasArea'),
+  container = document.getElementById('main-container'),
+  score = document.getElementById('score'),
   ctx = canvas.getContext('2d'),
   windowGeneralWidth = document.documentElement.clientWidth,
   windowGeneralHeight = document.documentElement.clientHeight,
   squareSize = 10,
-  step = 5,
-  objectsPerLength = 5
+  step = 1,
+  objectsPerLength = 20
+
+// Canvas default size, remove blur and make vision clear
+canvas.width = 1000;
+canvas.height = 500;
 
 // define general let
 let
-  currentDirection = "right",
+  currentDirection = "",
   snakeLength = 5,
   appleRandom_x = null,
   appleRandom_y = null,
   objectsArray = [
-    { x: Math.floor(windowGeneralWidth / 2), y: Math.floor(windowGeneralHeight / 2) },
-    { x: Math.floor(windowGeneralWidth / 2) + step, y: Math.floor(windowGeneralHeight / 2) },
-    { x: Math.floor(windowGeneralWidth / 2) + step * 2, y: Math.floor(windowGeneralHeight / 2) }
+    { x: Math.floor(canvas.width/2), y: Math.floor(canvas.height /2) }
   ],
   apples = []
 
-// Canvas default size, remove blur and make vision clear
-canvas.width = windowGeneralWidth;
-canvas.height = windowGeneralHeight;
 
 function main() {
 
@@ -78,11 +79,6 @@ function main() {
     ctx.fillStyle="red";
     ctx.fillRect(apples[0].x, apples[0].y, squareSize, squareSize);
 
-    // console.log("DOT (x): " + objectsArray[objectsArray.length - 1].x);
-    // console.log("DOT (y): " + objectsArray[objectsArray.length - 1].y);
-    // console.log("apples[0].x: " + apples[0].x)
-    // console.log("apples[0].y: " + apples[0].y)
-
     // Checking if snake touched an apple
     if (
       (objectsArray[objectsArray.length - 1].x - apples[0].x < 10 && objectsArray[objectsArray.length - 1].x - apples[0].x > -10) &&
@@ -90,44 +86,60 @@ function main() {
     {
       ++snakeLength;
       apples.length = 0;
+      updateScore(snakeLength);
     }
-
-    // objectsArray.forEach(element => {
-    //   if (
-    //     (objectsArray[objectsArray.length - 1].x - element.x < 4 && objectsArray[objectsArray.length - 1].x - element.x > -4) &&
-    //     (objectsArray[objectsArray.length - 1].y - element.y < 4 && objectsArray[objectsArray.length - 1].y - element.y > -4) )
-    //   {
-    //     alert('wfefwe');
-    //   }
-    // });
 
     for (let i = 0; i < objectsArray.length; i++) {
       if (i === objectsArray.length-1) {continue;}
       if (
-        (objectsArray[objectsArray.length - 1].x - objectsArray[i].x < 3 && objectsArray[objectsArray.length - 1].x - objectsArray[i].x > -3) &&
-        (objectsArray[objectsArray.length - 1].y - objectsArray[i].y < 3 && objectsArray[objectsArray.length - 1].y - objectsArray[i].y > -3)
+        (objectsArray[objectsArray.length - 1].x - objectsArray[i].x < step && objectsArray[objectsArray.length - 1].x - objectsArray[i].x > -step) &&
+        (objectsArray[objectsArray.length - 1].y - objectsArray[i].y < step && objectsArray[objectsArray.length - 1].y - objectsArray[i].y > -step)
          )
       {
-        alert('GAME OVER');
+        gameOver();
       }
     }
 
-    console.log('-------------------------------------------------------------')
-    console.log("X of snake head: " + objectsArray[objectsArray.length-1].x);
-    console.log("X of the second element: " + objectsArray[objectsArray.length-2].x);
-    console.log("Y of the head: " + objectsArray[objectsArray.length-1].y);
-    console.log("Y of the second element: " + objectsArray[objectsArray.length-2].y);
+    // console.log('-------------------------------------------------------------')
+    // console.log("X of snake head: " + objectsArray[objectsArray.length-1].x);
+    // console.log("X of the second element: " + objectsArray[objectsArray.length-2].x);
+    // console.log("Y of the head: " + objectsArray[objectsArray.length-1].y);
+    // console.log("Y of the second element: " + objectsArray[objectsArray.length-2].y);
 
 
-  }, 10);
+  }, 1);
 
 }
 
+function checkDirection() {
+  
+}
+
+function gameOver() {
+  objectsArray = [
+    { x: Math.floor(canvas.width/2), y: Math.floor(canvas.height /2) }
+  ]
+  currentDirection = "";
+  snakeLength = 5;
+  apples.length = 0;
+  appleRandom_x = null;
+  appleRandom_y = null;
+  updateScore(5);
+  alert('GAME OVER');
+}
+
+function updateScore(count) {
+  score.querySelector('span').innerHTML = count;
+}
 
 // Keydown listener / function, change current direction of the snake
 document.addEventListener('keydown', () => {
 
-  // console.log("EVENT KEY CODE - " + event.keyCode);
+  console.log("EVENT KEY CODE - " + event.keyCode);
+
+  if (event.keyCode === 32) {
+    // gamePause();
+  }
 
   if ((event.keyCode === 37 || event.keyCode === 65) && (currentDirection != "right" && currentDirection != "left")) {
     currentDirection = "left";
