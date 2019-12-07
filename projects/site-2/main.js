@@ -21,7 +21,7 @@ let
   appleRandom_x = null,
   appleRandom_y = null,
   objectsArray = [
-    { x: Math.floor(canvas.width/2), y: Math.floor(canvas.height /2) }
+    { x: Math.floor(canvas.width / 2), y: Math.floor(canvas.height / 2) }
   ],
   apples = []
 
@@ -52,7 +52,7 @@ function main() {
 
     // Rendering of all snake objects to be visible
     objectsArray.forEach(element => {
-      ctx.fillStyle="lime";
+      ctx.fillStyle = "lime";
       ctx.fillRect(element.x, element.y, squareSize, squareSize);
     })
 
@@ -60,42 +60,37 @@ function main() {
     if (objectsArray.length === snakeLength * objectsPerLength) {
       objectsArray.shift();
     }
-    
+
     // if 0 apples, then push for a new apple, generate random place
     if (apples.length === 0) {
       appleRandom_x = Math.floor(Math.random() * canvas.width);
       appleRandom_y = Math.floor(Math.random() * canvas.height);
 
-      // fix the possible bug so apple could respawn super close to the end of the map
-      appleRandom_x = appleRandom_x < 30 ? 30 : appleRandom_x;
-      appleRandom_x = appleRandom_x > canvas.width ? canvas.width - 30 : appleRandom_x;
-      appleRandom_y = appleRandom_y < 30 ? 30 : appleRandom_y;
-      appleRandom_y = appleRandom_y > canvas.height ? canvas.height - 30 : appleRandom_y;
+      applePosition = appleInZone({ x: appleRandom_x, y: appleRandom_y });
+      appleInZone(applePosition);
 
-      apples.push({x: appleRandom_x, y: appleRandom_y});
+      apples.push(applePosition);
     }
 
     // add apple to the screen
-    ctx.fillStyle="red";
+    ctx.fillStyle = "red";
     ctx.fillRect(apples[0].x, apples[0].y, squareSize, squareSize);
 
     // Checking if snake touched an apple
     if (
       (objectsArray[objectsArray.length - 1].x - apples[0].x < 10 && objectsArray[objectsArray.length - 1].x - apples[0].x > -10) &&
-      (objectsArray[objectsArray.length - 1].y - apples[0].y < 10 && objectsArray[objectsArray.length - 1].y - apples[0].y > -10) ) 
-    {
+      (objectsArray[objectsArray.length - 1].y - apples[0].y < 10 && objectsArray[objectsArray.length - 1].y - apples[0].y > -10)) {
       ++snakeLength;
       apples.length = 0;
       updateScore(snakeLength);
     }
 
     for (let i = 0; i < objectsArray.length; i++) {
-      if (i === objectsArray.length-1) {continue;}
+      if (i === objectsArray.length - 1) { continue; }
       if (
         (objectsArray[objectsArray.length - 1].x - objectsArray[i].x < step && objectsArray[objectsArray.length - 1].x - objectsArray[i].x > -step) &&
         (objectsArray[objectsArray.length - 1].y - objectsArray[i].y < step && objectsArray[objectsArray.length - 1].y - objectsArray[i].y > -step)
-         )
-      {
+      ) {
         gameOver();
       }
     }
@@ -111,13 +106,18 @@ function main() {
 
 }
 
-function checkDirection() {
-  
+function appleInZone(applePosition) {
+  if (applePosition.x < 30) {applePosition.x = 30}
+  if (applePosition.x > canvas.width) {applePosition.x = canvas.width - 30}
+  if (applePosition.y < 30) {applePosition.y = 30}
+  if (applePosition.y > canvas.height) {applePosition.y = canvas.height - 30}; 
+
+  return applePosition;
 }
 
 function gameOver() {
   objectsArray = [
-    { x: Math.floor(canvas.width/2), y: Math.floor(canvas.height /2) }
+    { x: Math.floor(canvas.width / 2), y: Math.floor(canvas.height / 2) }
   ]
   currentDirection = "";
   snakeLength = 5;
