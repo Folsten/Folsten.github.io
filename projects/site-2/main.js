@@ -7,28 +7,33 @@ const
   windowGeneralWidth = document.documentElement.clientWidth,
   windowGeneralHeight = document.documentElement.clientHeight,
   squareSize = 10,
-  step = 1,
-  objectsPerLength = 20
+  objectsPerLength = 15
 
 // Canvas default size, remove blur and make vision clear
-canvas.width = 1000;
-canvas.height = 500;
+// canvas.width = 1000;
+// canvas.height = 500;
+canvas.width = windowGeneralWidth;
+canvas.height = windowGeneralHeight * 0.95;
 
-// define general let
+// define general variables
 let
   currentDirection = "",
-  snakeLength = 5,
+  snakeLength = 1,
   appleRandom_x = null,
   appleRandom_y = null,
   objectsArray = [
     { x: Math.floor(canvas.width / 2), y: Math.floor(canvas.height / 2) }
   ],
-  apples = []
+  apples = [],
+  cooldown = false,
+  step = 3,
+  intervalPeriod = 10;
+  intervalPeriodChanged = false;
 
 
 function main() {
 
-  setInterval(() => {
+  function loop() {
 
     // Redndering of general black area
     ctx.fillStyle = "black";
@@ -76,15 +81,24 @@ function main() {
     ctx.fillStyle = "red";
     ctx.fillRect(apples[0].x, apples[0].y, squareSize, squareSize);
 
+    // let apple_texture = document.getElementById('apple_texture');
+    // console.log(apple_texture);
+    // ctx.drawImage(apple_texture, apples[0].x, apples[0].y, 10, 10);
+
     // Checking if snake touched an apple
     if (
       (objectsArray[objectsArray.length - 1].x - apples[0].x < 10 && objectsArray[objectsArray.length - 1].x - apples[0].x > -10) &&
       (objectsArray[objectsArray.length - 1].y - apples[0].y < 10 && objectsArray[objectsArray.length - 1].y - apples[0].y > -10)) {
       ++snakeLength;
+      if (intervalPeriod != 1) {
+        intervalPeriod -= 0.15;
+      }
+      intervalPeriodChanged = true;
       apples.length = 0;
       updateScore(snakeLength);
     }
 
+    // Checking if snake touch himself, in this case game over
     for (let i = 0; i < objectsArray.length; i++) {
       if (i === objectsArray.length - 1) { continue; }
       if (
@@ -102,15 +116,23 @@ function main() {
     // console.log("Y of the second element: " + objectsArray[objectsArray.length-2].y);
 
 
-  }, 1);
+    if (intervalPeriodChanged) {
+      clearInterval(mainInterval);
+      mainInterval = setInterval(loop, intervalPeriod);
+    }
+    // clearInterval(mainInterval);
+
+  }
+
+  var mainInterval = setInterval(loop, intervalPeriod);
 
 }
 
 function appleInZone(applePosition) {
-  if (applePosition.x < 30) {applePosition.x = 30}
-  if (applePosition.x > canvas.width - squareSize) {applePosition.x = canvas.width - 30}
-  if (applePosition.y < 30) {applePosition.y = 30}
-  if (applePosition.y > canvas.height - squareSize) {applePosition.y = canvas.height - 30}; 
+  if (applePosition.x < 30) { applePosition.x = 30 }
+  if (applePosition.x > canvas.width - squareSize) { applePosition.x = canvas.width - 30 }
+  if (applePosition.y < 30) { applePosition.y = 30 }
+  if (applePosition.y > canvas.height - squareSize) { applePosition.y = canvas.height - 30 };
 
   return applePosition;
 }
@@ -120,11 +142,12 @@ function gameOver() {
     { x: Math.floor(canvas.width / 2), y: Math.floor(canvas.height / 2) }
   ]
   currentDirection = "";
-  snakeLength = 5;
+  snakeLength = 1;
   apples.length = 0;
   appleRandom_x = null;
   appleRandom_y = null;
-  updateScore(5);
+  intervalPeriod = 10;
+  updateScore(0);
   alert('GAME OVER');
 }
 
@@ -135,29 +158,34 @@ function updateScore(count) {
 // Keydown listener / function, change current direction of the snake
 document.addEventListener('keydown', () => {
 
-  console.log("EVENT KEY CODE - " + event.keyCode);
+  if (cooldown === false) {
 
-  if (event.keyCode === 32) {
-    // gamePause();
-  }
+    if ((event.keyCode === 37 || event.keyCode === 65) && (currentDirection != "right" && currentDirection != "left")) {
+      currentDirection = "left";
+      keyCooldown();
+    }
+    if ((event.keyCode === 38 || event.keyCode === 87) && (currentDirection != "up" && currentDirection != "down")) {
+      currentDirection = "up";
+      keyCooldown();
+    }
+    if ((event.keyCode === 39 || event.keyCode === 68) && (currentDirection != "right" && currentDirection != "left")) {
+      currentDirection = "right";
+      keyCooldown();
+    }
+    if ((event.keyCode === 40 || event.keyCode === 83) && (currentDirection != "down" && currentDirection != "up")) {
+      currentDirection = "down";
+      keyCooldown();
+    }
 
-  if ((event.keyCode === 37 || event.keyCode === 65) && (currentDirection != "right" && currentDirection != "left")) {
-    currentDirection = "left";
-    // console.log("left");
-  }
-  if ((event.keyCode === 38 || event.keyCode === 87) && (currentDirection != "up" && currentDirection != "down")) {
-    currentDirection = "up";
-    // console.log("up");
-  }
-  if ((event.keyCode === 39 || event.keyCode === 68) && (currentDirection != "right" && currentDirection != "left")) {
-    currentDirection = "right";
-    // console.log("right");
-  }
-  if ((event.keyCode === 40 || event.keyCode === 83) && (currentDirection != "down" && currentDirection != "up")) {
-    currentDirection = "down";
-    // console.log("down");
   }
 
 })
+
+function keyCooldown() {
+  if (cooldown === false) {
+    cooldown = true;
+    setTimeout(() => { cooldown = false }, 10);
+  }
+}
 
 main();
