@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i&display=swap');
+/* font-family: 'Open Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
+
+
+html {
+  font-size: 14px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url("img/test-background.jpg");
+  background-size: cover;
+}
+
+.modal {
+  overflow: hidden;
+  position: absolute;
+  max-width: 1400px;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container {
+  margin: 10px 10px 10px 10px;
+  border-radius: 7px;
+  width: 100%;
+}
+
+.table-container {
+  height: 100%;
+}
+
+.table {
+  border: 2px solid white;
+  border-collapse: collapse;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100px !important;
+}
+
+.table__header {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: #424236;
+}
+
+.table__text {
+  font-weight: bold;
+}
+
+.table__close {
+  cursor: pointer;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 999px;
+}
+
+.table__close:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  background: url('img/cancel-mark.svg') no-repeat;
+  background-size: cover;
+}
+
+.table__footer {
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.table__joker {
+  position: absolute;
+  left: 5px;
+}
+
+.table__joker:after {
+  content: '';
+  position: absolute;
+  display: block;
+  border: 1px solid #eeeeee;
+  border-radius: 2px; 
+  width: 30px;
+  height: 35px;
+  transform: translateY(-5px);
+  background: url('img/cards/S-3.jpg') no-repeat;
+  background-size: 90px;
+  left: 45px;
+  top: 0;
+}
+
+.table__gameStarts {
+
+}
+
+.table tr {
+  background-color: #C4C4A8;
+}
+
+.table tr th {
+  background-color: #c4c4A8;
+  border: 2px solid white;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+table tr td {
+  background-color: #DEDDBE;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 30px;
+  border: 2px solid white;
+  text-align: center;
+}
+
+
+
+/* Special Styles (correction */
+
+.table__upperTr td {
+  background-color: #424236;
+  height: 25px;
+}
+
+.table__lowerTr td {
+  background-color: #81806E;
+  height: 35px;
+  overflow: hidden;
+}
+
+.first-cell {
+  border-left: 0 !important;
+}
+
+.last-cell {
+  border-right: 0 !important;
+}
+
+.first-tr {
+  border-top: 0 !important;
+}
+
+.last-tr td {
+  border-bottom: 0 !important;
+}
+
+.empty-space-filling {
+  height: 100%;
+}
+
+
+.table__cup-result {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.table__cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.special_button {
+  padding-left: 10px;
+}
+
+.special_button .button {
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 50px;
+  background-color: #00953B;
+  color: white;
+  font-weight: bold;
+}
+
+.table__cup-result img {
+  width: 30px;
+}
+
+.th-cards {
+  width: 50%;
+}
+
+
+/* CARDS STYLES */
+
+.cards-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card {
+  border-radius: 2px;
+  border: 1px solid #eeeeee;
+  height: 50px;
+  width: 14px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+}
+
+.full-display {
+  width: 31px;
+}
+
+.part {
+  padding-left: 7px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.no-padding-left {
+  padding-left: 0px;
+}
+
+/* ADD ALL CARDS */
+
+/* C */
+
+.c-2 {
+  background-image: url('img/cards/C-2.jpg');
+}
+
+.c-3 {
+  background-image: url('img/cards/C-3.jpg');
+}
+
+.c-4 {
+  background-image: url('img/cards/C-4.jpg');
+}
+
+.c-5 {
+  background-image: url('img/cards/C-5.jpg');
+}
+
+.c-6 {
+  background-image: url('img/cards/C-6.jpg');
+}
+
+.c-7 {
+  background-image: url('img/cards/C-7.jpg');
+}
+
+.c-8 {
+  background-image: url('img/cards/C-8.jpg');
+}
+
+.c-9 {
+  background-image: url('img/cards/C-9.jpg');
+}
+
+.c-10 {
+  background-image: url('img/cards/C-10.jpg');
+}
+
+.c-a {
+  background-image: url('img/cards/C-A.jpg');
+}
+
+.c-j {
+  background-image: url('img/cards/C-J.jpg');
+}
+
+.c-k {
+  background-image: url('img/cards/C-K.jpg');
+}
+
+.c-q {
+  background-image: url('img/cards/C-Q.jpg');
+}
+
+/* D */
+
+.d-2 {
+  background-image: url('img/cards/D-2.jpg');
+}
+
+.d-3 {
+  background-image: url('img/cards/D-3.jpg');
+}
+
+.d-4 {
+  background-image: url('img/cards/D-4.jpg');
+}
+
+.d-5 {
+  background-image: url('img/cards/D-5.jpg');
+}
+
+.d-6 {
+  background-image: url('img/cards/D-6.jpg');
+}
+
+.d-7 {
+  background-image: url('img/cards/D-7.jpg');
+}
+
+.d-8 {
+  background-image: url('img/cards/D-8.jpg');
+}
+
+.d-9 {
+  background-image: url('img/cards/D-9.jpg');
+}
+
+.d-10 {
+  background-image: url('img/cards/D-10.jpg');
+}
+
+.d-a {
+  background-image: url('img/cards/D-A.jpg');
+}
+
+.d-j {
+  background-image: url('img/cards/D-J.jpg');
+}
+
+.d-k {
+  background-image: url('img/cards/D-K.jpg');
+}
+
+.d-q {
+  background-image: url('img/cards/D-Q.jpg');
+}
+
+/* H */
+
+.h-2 {
+  background-image: url('img/cards/H-2.jpg');
+}
+
+.h-3 {
+  background-image: url('img/cards/H-3.jpg');
+}
+
+.h-4 {
+  background-image: url('img/cards/H-4.jpg');
+}
+
+.h-5 {
+  background-image: url('img/cards/H-5.jpg');
+}
+
+.h-6 {
+  background-image: url('img/cards/H-6.jpg');
+}
+
+.h-7 {
+  background-image: url('img/cards/H-7.jpg');
+}
+
+.h-8 {
+  background-image: url('img/cards/H-8.jpg');
+}
+
+.h-9 {
+  background-image: url('img/cards/H-9.jpg');
+}
+
+.h-10 {
+  background-image: url('img/cards/H-10.jpg');
+}
+
+.h-a {
+  background-image: url('img/cards/H-A.jpg');
+}
+
+.h-j {
+  background-image: url('img/cards/H-J.jpg');
+}
+
+.h-k {
+  background-image: url('img/cards/H-K.jpg');
+}
+
+.h-q {
+  background-image: url('img/cards/H-Q.jpg');
+}
+
+/* S */
+
+.s-2 {
+  background-image: url('img/cards/S-2.jpg');
+}
+
+.s-3 {
+  background-image: url('img/cards/S-3.jpg');
+}
+
+.s-4 {
+  background-image: url('img/cards/S-4.jpg');
+}
+
+.s-5 {
+  background-image: url('img/cards/S-5.jpg');
+}
+
+.s-6 {
+  background-image: url('img/cards/S-6.jpg');
+}
+
+.s-7 {
+  background-image: url('img/cards/S-7.jpg');
+}
+
+.s-8 {
+  background-image: url('img/cards/S-8.jpg');
+}
+
+.s-9 {
+  background-image: url('img/cards/S-9.jpg')
+}
+
+.s-10 {
+  background-image: url('img/cards/S-10.jpg')
+}
+
+.s-a {
+  background-image: url('img/cards/S-A.jpg')
+}
+
+.s-j {
+  background-image: url('img/cards/S-J.jpg');
+}
+
+.s-k {
+  background-image: url('img/cards/S-K.jpg');
+}
+
+.s-q {
+  background-image: url('img/cards/S-Q.jpg');
+}
+
+/* Jokers */
+
+.black-joker {
+  background-image: url('img/cards/Black-joker.jpg');
+}
+
+.red-joker {
+  background-image: url('img/cards/Red-Joker.jpg');
+}
