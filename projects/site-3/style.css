@@ -27,7 +27,7 @@ body {
 }
 
 .modal {
-  transform: rotate(90deg);
+  transform: rotate(0deg);
   position: absolute;
   width: 100%;
   max-width: 900px;
@@ -493,6 +493,13 @@ table tr td {
 
 
 /* MEDIA REQUESTS */
+
+/* delete this one media request in case you don't want to switch screen rotate depends on screen width */
+@media screen and (max-width: 1000px) {
+  .modal {
+    transform: rotate(90deg);
+  }
+}
 
 @media screen and (max-width: 630px) {
   html {
