@@ -30,7 +30,7 @@ body {
   transform: rotate(90deg);
   position: absolute;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   background-color: rgba(0,0,0,0.5);
   border-radius: 7px;
   display: flex;
