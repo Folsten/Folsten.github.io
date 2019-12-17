@@ -29,7 +29,8 @@ body {
 .modal {
   transform: rotate(90deg);
   position: absolute;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1200px;
   background-color: rgba(0,0,0,0.5);
   border-radius: 7px;
   display: flex;
@@ -488,4 +489,24 @@ table tr td {
 
 .red-joker {
   background-image: url('img/cards/Red-Joker.jpg');
+}
+
+
+/* MEDIA REQUESTS */
+
+@media screen and (max-width: 630px) {
+  html {
+    font-size: 12px;
+  }
+  .table tr th {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+  .table tr td {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+  .special_button .button {
+    width: 50px;
+  }
 }
