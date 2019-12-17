@@ -27,6 +27,7 @@ body {
 }
 
 .modal {
+  min-width: 540px;
   transform: rotate(0deg);
   position: absolute;
   width: 100%;
