@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TarkovBot - прогрессивный бот для барахолки</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- VK script -->
+    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?167"></script>
+    <script type="text/javascript">VK.init({ apiId: 7355870, onlyWidgets: true });</script>
+    <!-- MY CSS FILES -->
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- discord notification -->
+
+        <div class="discord__notify">Discord скопирован в буфер обмена</div>
+
+        <!-- $ Overlays $ -->
+
+        <div class="overlay" id="video">
+            <div class="container">
+                <iframe id="iframe-youtube" src="https://www.youtube.com/embed/bGQYo6Lk44c?enablejsapi=1"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="overlay__closeButton"></div>
+        </div>
+
+        <div class="overlay" id="background-overlay"></div>
+
+        <!-- Mobile Menu block -->
+
+        <div class="mobileMenu">
+            <div class="mobileMenu__material">
+                <ul>
+                    <li><a href="#" class="triggerVideo" id="mobileMenu-closeOverlay">Видео</a></li>
+                    <li><a href="#purchase">Купить</a></li>
+                    <li><a href="#feedbacks">Отзывы</a></li>
+                    <li><a href="#faq">Ответы на вопросы</a></li>
+                </ul>
+                <div class="mobileMenu__social">
+                    <a href="https://vk.com/id242433876" target="_blank" class="mobileMenu__contactWay"><img
+                            src="img/vk.svg"></a>
+                    <a class="mobileMenu__contactWay copyDiscord" data-pos="bottom"><img src="img/discord.svg"></a>
+                    <a href="https://tlgg.ru/folsten" target="_blank" class="mobileMenu__contactWay"><img
+                            src="img/telegram.svg"></a>
+                </div>
+            </div>
+
+            <div class="mobileMenu__close"></div>
+        </div>
+
+        <!-- >> Welcome Secion << -->
+        <section class="welcome">
+            <div class="container">
+                <header>
+                    <div class="welcome__logo">
+                        <a href="#">TarkovBot</a>
+                    </div>
+                    <div class="welcome__menu">
+                        <ul>
+                            <li><a class="triggerVideo">Видео</a></li>
+                            <li><a href="#purchase">Купить</a></li>
+                            <li><a href="#feedbacks">Отзывы</a></li>
+                            <li><a href="#faq">Ответы на вопросы</a></li>
+                        </ul>
+                    </div>
+                    <div class="welcome__social">
+                        <a href="https://vk.com/id242433876" target="_blank"
+                            class="welcome__contactWay welcome__vk"><img src="img/vk.svg"></a>
+                        <a class="welcome__contactWay welcome__discord copyDiscord"><img src="img/discord.svg"></a>
+                        <a href="https://tlgg.ru/folsten" target="_blank"
+                            class="welcome__contactWay welcome__telegram"><img src="img/telegram.svg"></a>
+                    </div>
+                    <div class="welcome__burgerIcon"><img src="img/open-menu-actual.svg"></div>
+                </header>
+                <div class="welcome__greeting">
+                    <div class="welcome__title">
+                        TarkovBot
+                    </div>
+                    <div class="welcome__pretitle">
+                        <div class="welcome__patch">
+                            Текущий патч: 0.12.4
+                        </div>
+                        <div class="welcome__status">
+                            Статус
+                            <div class="welcome__statusWork">
+                                <div class="welcome__statusCircle"></div>
+                                Работает
+                            </div>
+                        </div>
+                    </div>
+                    <div class="welcome__buttons">
+                        <a>
+                            <div class="welcome__mainButton welcome__button triggerVideo">Видео</div>
+                        </a>
+                        <a href="#purchase">
+                            <div class="welcome__secondaryButton welcome__button">Купить</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="#showcase" class="welcome__scrollDown-link"></a>
+            </div>
+        </section>
+
+        <!-- >> Showcase Section << -->
+        <section class="showcase" id="showcase">
+            <div class="container">
+                <div class="showcase__case">
+                    <img src="img/gengen.gif">
+                    <!-- <div class="showcase__circleShadow"></div> -->
+                </div>
+                <div class="showcase__information">
+                    <div class="showcase__title">
+                        TarkovBot - что это?
+                    </div>
+                    <div class="showcase__text">
+                        <p>TarkovBot предоставляет уникальную возможность пассивного заработка игровой валюты в режиме
+                            оффлайн.</p>
+                        <p>Всё, что от вас потребуется - это запустить бота, никаких запутанных настроек или
+                            необходимости ознакомления с сложными инструкциями.</p>
+                        <p>Бот работает по принципу сканирования цен на барахолке и выкупа / перепродажи предметов на
+                            основе
+                            собранных данных.</p>
+                        <p>Разумеется, для ведения эффективной торговли бот вынужден учитывать множество нюансов, таких
+                            как общее количество выставленных лотов по тому или иному артикулу, размер комиссии,
+                            прогнозируемая длительность продажи и прочее. Подобные алгоритмы реализованы и постоянно
+                            совершенствуются, позволяя боту становиться всё продуктивнее с каждым последующим
+                            обновлением
+                            и полностью исключая статистическую возможность утраты игровой валюты.</p>
+                        <p><span class="triggerVideo">Запустить демонстрационное видео</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- >> Purchase section << -->
+        <section class="purchase" id="purchase">
+            <div class="container">
+                <div class="purchase__material">
+                    <div class="purchase__title">
+                        Выбор лицензии
+                    </div>
+                    <!-- <div class="purchase__pretitle">
+                        Бот распростряется по системе подписки
+                    </div> -->
+                    <!-- <div class="purchase__products">
+                        <div class="purchase__item">
+                            <div class="purchase__price purchase__price_standard">
+                                990 рублей
+                            </div>
+                            <div class="purchase__time purchase__time_standard">
+                                1 месяц
+                            </div>
+                            <a href="#" class="purchase__buy purchase__buy_standard">
+                                Оплатить<img src="img/coins (1).svg">
+                            </a>
+                        </div>
+                        <div class="purchase__item">
+                            <div class="purchase__price purchase__price_advanced">
+                                2100 рублей
+                            </div>
+                            <div class="purchase__time purchase__time_advanced">
+                                3 месяца
+                            </div>
+                            <a href="#" class="purchase__buy purchase__buy_advanced">
+                                Оплатить<img src="img/coins (1).svg">
+                            </a>
+                        </div>
+                    </div> -->
+                    <div class="purchase__product">
+                        <div class="purchase__long">
+                            <span>Период:</span>
+                            <select>
+                                <option selected value="1">1 месяц</option>
+                                <option value="2">2 месяца</option>
+                                <option value="3">3 месяца</option>
+                            </select>
+                        </div>
+                        <div class="purchase__details">
+                            <!-- <span class="purchase__priceWord">Стоимость:</span> -->
+                            <div class="purchase__priceSum">
+                                <span class="purchase__initialPrice">1400 рублей</span>
+                                <span class="purchase__currentPrice">980 рублей</span>
+                            </div>
+                        </div>
+                        <a href="https://yasobe.ru/na/tarkovbot_1month" 
+                            class="purchase__buy" 
+                            id="buyButton" 
+                            onclick="ym(61009258,'reachGoal','buyButton'); return true;"
+                            target="_blank">
+                            Оплатить
+                        </a>
+                    </div>
+                    <div class="purchase__rules">
+                        *После оплаты подписки на указанную вами электронную почту будет выслан лицензионный ключ
+                        продукта. Также, в письме вы найдёте ссылку для присоединения к нашему приватному Discord
+                        серверу. При первом заходе на сервер - Discord бот запросит ваш лицензионный ключ и только после
+                        этого предоставит вам доступ ко всем материалам.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedbacks Section -->
+        <section class="feedbacks" id="feedbacks">
+            <div class="container">
+                <div id="vk_comments"></div>
+            </div>
+        </section>
+
+        <!-- >> Faq Section << -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="faq__title">
+                    Часто задаваемые вопросы
+                </div>
+                <div class="faq__accordion">
+                    <div class="faq__item accordion-active">
+                        <div class="faq__question">Это безопасно?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Да, предельно безопасно, в отличие от обычного механизма инъекции внутриигровых читов -
+                                наш
+                                бот никак не вмешивается в память игры и не взаимодействует с её файлами.</p>
+                            <p>Из этого также следует, что бот будет работать даже если Escape From Tarkov и вовсе не
+                                установлена на вашем компьютере.</p>
+                            <p>Бот работает через внутреннее API BattleState Games, используя HTTP запросы и WebSocket
+                                соединение. </p>
+                            <p>Благодаря подобному подходу нет никакой вероятности попасть под действие античита,
+                                поскольку подобный способ взаимодействия с игрой находится вне зоны его ответственности
+                                и на данный момент для BSG не представляется возможным отличить "живые" HTTP запросы
+                                от симуляции, ведь, фактически, они передают одни и те же
+                                данные с идентичными параметрами.</p>
+                            <p>В случае, если вы по прежнему переживаете за безопасность вашего аккаунта, то вы всегда
+                                имеете возможность просто
+                                использовать бота на 2-ом аккаунте, а деньги с него пересылать на основной, более
+                                подробная информация об этом есть в нашем Discord сервере.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Насколько бот эффективен?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Это напрямую зависит от того сколько слотов на барахолке вам доступно.</p>
+                            <p>Каждый слот ≈45.000 RUB / час.</p>
+                            <p>По умолчанию вам доступно 3 слота, тем самым это ≈135.000 в час и около 3 миллионов за 24
+                                часа.</p>
+                            <p>Также, чем больше вы используете бота и торгуете, тем выше ваша репутация на барахолке,
+                                что позволит вам открыть дополнительные слоты и зарабатывать ещё больше, звучит неплохо,
+                                верно?</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Могу ли я использовать бота и играть в одно и тоже время?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Технически это возможно, поскольку во время работы бот не производит каких-либо изменений
+                                в интерфейсе игры и даже не требует её установки и запуска, однако, по причинам
+                                безопасности мы не рекомендуем этого делать.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Что произойдёт в случае падения серверов Escape From Tarkov?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>В программе продумана и хорошо оптимизирована система автоматического реконнекта.</p>
+                            <p>В случае падения серверов игры, программа автоматически время от времени будет проверять
+                                их на доступность и как только сервера станут доступны бот переподключится и продолжит
+                                работу, от вас не потребуется никаких дополнительных действий.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Как обстоят дела с сообществом проекта?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>На текущий момент времени сообщество целиком и полностью сосредоточено в единственной
+                                официальной группе в Discord.</p>
+                            <p>Эта группа является приватной, это значит, что для доступа к ней серверный бот запросит
+                                ваш лицензионный ключ и только после этого откроет вам доступ к материалам.</p>
+                            <p>Лицензионный ключ, как и ссылку на наш сервер вы получите в письме, что придёт вам сразу
+                                же после оплаты подписки на выбранный вами период.</p>
+                            <p>Данные меры являются вынужденными, чтобы максимально снизить потенциальное количество
+                                жалоб на запрещённую тематику и свести к минимуму вероятность удаления группы
+                                администрацией мессенджера Discord.</p>
+                            <p>Эту проблему мог бы решить собственный форум, однако на данный момент это не является
+                                нашей приоритетной задачей, поскольку текущий формат почти полностью удовлетворяет нашим
+                                запросам и запросам сообщества.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Каковы требования к моему ПК?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <ul>
+                                <li>Windows 7 или выше</li>
+                                <li>Доступ к интернету</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Почему бот не обладает графическим интерфейсом и основан на
+                            английском языке?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Дело в том, что программа разрабатывалась и продолжает дорабатываться одним человеком.
+                            </p>
+                            <p>При расставлении приоритетов был принят ряд необходимых концептуальных решений, которые в
+                                последствии позволили выпустить качественный продукт в адекватные сроки, здесь мы
+                                расскажем о двух из них.</p>
+                            <p><b>Первым</b> было полностью отказаться от графического интерфейса в пользу консольной
+                                реализации.</p>
+                            <p>Уже в самом начале разработки было понятно, что между аккаунтами не существует каких-либо
+                                принципиальных различий.</p>
+                            <p>Все различия между ними, которые могли бы оказать влияние на разработку - это отличный
+                                друг от друга размер схрона, размер комиссии, количество слотов на барахолке и некоторые
+                                другие подобные этим нюансы, однако ничего уникального для каждого из аккаунтов.</p>
+                            <p>Это означало, что всё это можно проработать внутри алгоритмов приложения без прямого
+                                вмешательства
+                                пользователя.</p>
+                            <p>Из этого был сделан вывод, что в приложении не будет никаких настроек или же их
+                                присутствие будет минимальным, соответственно его можно будет создать максимально
+                                простым как в плане взаимодействия с интерфейсом, так и в плане конфигурационных
+                                возможностей, при этом не жертвуя удобством его использования.</p>
+                            <p>Для этого идеально подошла консольная реализация с небольшим пуллом команд, основным
+                                плюсом такого выбора стало то, что консольные приложения проще сопровождать и расширять,
+                                добавляя новые возможности.
+                                <p>Теперь нет никакой необходимости каждый раз проводить ряд тестов с различными
+                                    настройками, чтобы убедиться, что всё работает стабильно, также пропала надобность
+                                    внесения каких либо изменений в интерфейс при каждом новом обновлении, ведь его и
+                                    вовсе нет.</p>
+                                <p><b>Вторым</b> решением было создание программы исключительно на английском языке.</p>
+                                <p>Принятию данного решение от части поспособствовало первое, ведь тогда уже было
+                                    очевидно, что в программе не будет большого количества текста и пулла настроек и не
+                                    будет никакой необходимости в точности понимать как работает каждая из них.</p>
+                                <p>В самой программе использовался исключительно базовый английский, понятный почти
+                                    каждому геймеру, кроме того, консоль поддерживает копирование, а значит вы сможете
+                                    запросто воспользоваться онлайн-переводчиком.</p>
+                                <p>Целесообразность же подобного решения очень проста - нет необходимости поддержки
+                                    нескольких языков и введения консольных команд для переключения между ними или же
+                                    ещё хуже - создания различных версий приложений для разных языков, это бы только
+                                    усложнило архитектурную логику и каждое последующее обновление с добавлением
+                                    новых возможностей сопровождалось бы текстовыми изменениями для двух языков, а не
+                                    для одного.</p>
+                                <p>Несмотря на наличие только русскоязычного сайта программа тем не менее на английском,
+                                    почему?</p>
+                                <p>Это решение принято на перспективу распространения приложения в Европе и Америке, уже
+                                    сейчас это является одной из приоритетных задач.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Тратится ли время моей подписки во время технических обновлений бота?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Вовсе нет, в случае возниковения сбоев в работе бота, связанных с новым патчем от
+                                разработчиков игры или вызванных какой либо другой причиной - время вашей подписки будет
+                                временно приостановлено, вплоть до полного исправления нами всех имеющихся проблем. </p>
+                            <p>Это позволит вам гарантированно не нести никаких потерь по подписке из-за временных
+                                проблем с работоспособностью торгового бота.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <div class="faq__question">Как я могу связаться с вами?
+                            <div class="faq__question-toggle"><img src="img/right-chevron.svg"></div>
+                        </div>
+                        <div class="faq__answer">
+                            <ul>
+                                <li class="faq__vkontakte"><a href="https://vk.com/id242433876"
+                                        target="_blank">Вконтакте</a></li>
+                                <li class="faq__discord"><span>Discord:</span> Folsten#7109</li>
+                                <li class="faq__telegram"><a href="https://tlgg.ru/folsten" target="_blank">Telegram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- >> Footer Section << -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__material">
+                    <div class="footer__copyright">TarkovBot @2020</div>
+                    <div class="footer__author">Designed and Engineered by <a href="https://vk.com/id242433876"
+                            target="_blank">Folsten</a></div>
+                    <div class="footer__social">
+                        <a href="https://vk.com/id242433876" target="_blank" class="footer__contactWay"><img
+                                src="img/vk.svg"></a>
+                        <a class="footer__contactWay copyDiscord"><img src="img/discord.svg"></a>
+                        <a href="https://tlgg.ru/folsten" target="_blank" class="footer__contactWay"><img
+                                src="img/telegram.svg"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(61009258, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/61009258" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- For VK comments widget -->
+    <script type="text/javascript">VK.Widgets.Comments("vk_comments", { limit: 5, attach: false });</script>
+    <script defer src="js/main.js"></script>
+    
+</body>
+</html>
